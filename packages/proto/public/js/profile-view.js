@@ -120,10 +120,16 @@ export class ProfileViewElement extends HTMLElement {
   <section>
     <slot name="avatar"></slot>
     <h1><slot name="username"></slot></h1>
+    <nav>
+      <button class="new" onclick="relayEvent(event, 'profile-view:new-mode')">New…</button>
+      <button class="edit" onclick="relayEvent(event, 'profile-view:edit-mode')">Edit</button>
+      <button class="close" onclick="relayEvent(event, 'profile-view:view-mode')">Close</button>
+      <button class="delete" onclick="relayEvent(event, 'profile-view:delete')">Delete</button>
+    </nav>
     <restful-form>
       <label>
         <span>User ID</span>
-        <input name="userId"/>
+        <input name="userId" />
       </label>
       <label>
         <span>Username</span>
@@ -133,36 +139,6 @@ export class ProfileViewElement extends HTMLElement {
         <span>Email</span>
         <input name="email" type="email" />
       </label>
-      <fieldset>
-        <legend>Progress</legend>
-        <label>
-          <span>Mobility</span>
-          <input type="number" name="progress.mobility"/>
-        </label>
-        <label>
-          <span>Strength</span>
-          <input type="number" name="progress.strength"/>
-        </label>
-        <label>
-          <span>Balance</span>
-          <input type="number" name="progress.balance"/>
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>Preferences</legend>
-        <label>
-          <span>Preferred Activities</span>
-          <input name="preferences.preferredActivities" />
-        </label>
-        <label>
-          <span>Difficulty Level</span>
-          <select name="preferences.difficultyLevel">
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </label>
-      </fieldset>
     </restful-form>
     <dl>
       <dt>User ID</dt>
@@ -171,26 +147,6 @@ export class ProfileViewElement extends HTMLElement {
       <dd><slot name="username"></slot></dd>
       <dt>Email</dt>
       <dd><slot name="email"></slot></dd>
-      <dt>Progress</dt>
-      <dd>
-        <dl>
-          <dt>Mobility</dt>
-          <dd><slot name="mobility"></slot></dd>
-          <dt>Strength</dt>
-          <dd><slot name="strength"></slot></dd>
-          <dt>Balance</dt>
-          <dd><slot name="balance"></slot></dd>
-        </dl>
-      </dd>
-      <dt>Preferences</dt>
-      <dd>
-        <dl>
-          <dt>Preferred Activities</dt>
-          <dd><slot name="preferredActivities"></slot></dd>
-          <dt>Difficulty Level</dt>
-          <dd><slot name="difficultyLevel"></slot></dd>
-        </dl>
-      </dd>
     </dl>
   </section>
   <style>${ProfileViewElement.styles}</style>
@@ -341,6 +297,10 @@ function renderSlots(json) {
 
     if (key === "avatar") {
       type = "avatar";
+    }
+    if (key === "progress") {
+      renderSlots(value);
+
     }
 
     switch (type) {

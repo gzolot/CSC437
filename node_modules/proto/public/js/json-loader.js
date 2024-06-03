@@ -33,7 +33,7 @@ export class JsonObjectElement extends HTMLElement {
     );
   }
 
-  _authObserver = new Observer(this, "slostudyspots:auth");
+  _authObserver = new Observer(this, "blazing:auth");
 
   connectedCallback() {
     const src = this.getAttribute("src");

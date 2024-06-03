@@ -10,7 +10,7 @@
     <script type="importmap">
       {
         "imports": {
-          "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
+          "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.js"
         }
       }
     </script>
@@ -48,7 +48,7 @@
 <body>
   <mu-auth provides="blazing:auth" redirect="../login.html">
   <h1>Edit Profile</h1>
-  <restful-form src="/api/profiles/newUser003" slot="form">
+  <!-- <restful-form src="/api/profiles/newUser003" slot="form">
       <label>UserID: <input type="text" name="userId"></label>
       <label>Username: <input type="text" name="username"></label>
       <label>Email: <input type="email" name="email"></label>
@@ -66,21 +66,8 @@
       </select>
       </label>
 
-        <!-- <legend>Progress</legend>
-        <label>Mobility: <input type="number" name="progress[mobility]"></label>
-        <label>Strength: <input type="number" name="progress[strength]"></label>
-        <label>Balance: <input type="number" name="progress[balance]"></label>
-
-        <legend>Preferences</legend>
-        <label>Preferred Activities: <input type="text" name="preferences[preferredActivities]" placeholder="Yoga, Running"></label>
-        <label>Difficulty Level:
-            <select name="preferences[difficultyLevel]">
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-            </select>
-        </label> -->
-  </restful-form>
+        
+  </restful-form> -->
 
   <profile-view src="/api/profiles/newUser003"></profile-view>
   <!-- <json-object src="/api/profiles/newUser003">

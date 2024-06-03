@@ -26,32 +26,32 @@ var import_mongoose = require("mongoose");
 const UserProfileSchema = new import_mongoose.Schema({
   userId: { type: String, required: true, trim: true, unique: true },
   username: { type: String, required: true, trim: true },
-  email: { type: String, required: true, trim: true },
-  progress: {
-    mobility: { type: Number, required: true },
-    strength: { type: Number, required: true },
-    balance: { type: Number, required: true }
-  },
-  preferences: {
-    preferredActivities: [{ type: String }],
-    difficultyLevel: { type: String, required: true }
-  }
+  email: { type: String, required: true, trim: true }
+  // progress: {
+  //   mobility: { type: Number, required: true },
+  //   strength: { type: Number, required: true },
+  //   balance: { type: Number, required: true }
+  // },
+  // preferences: {
+  //   preferredActivities: [{ type: String }],
+  //   difficultyLevel: { type: String, required: true }
+  // }
 }, { collection: "user_profiles" });
 const ProfileModel = (0, import_mongoose.model)("Profile", UserProfileSchema);
 let userProfiles = [
   {
     userId: "user001",
     username: "fitness_fanatic",
-    email: "fanatic@example.com",
-    progress: {
-      mobility: 75,
-      strength: 50,
-      balance: 60
-    },
-    preferences: {
-      preferredActivities: ["yoga", "weightlifting"],
-      difficultyLevel: "intermediate"
-    }
+    email: "fanatic@example.com"
+    // progress: {
+    //     mobility: 75,
+    //     strength: 50,
+    //     balance: 60
+    // },
+    // preferences: {
+    //     preferredActivities: ["yoga", "weightlifting"],
+    //     difficultyLevel: "intermediate"
+    // }
   }
   // add more UserProfile objects here
 ];

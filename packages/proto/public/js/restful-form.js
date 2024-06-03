@@ -1,5 +1,6 @@
 import { prepareTemplate } from "./template.js";
 import { Observer } from "@calpoly/mustang";
+import { loadJSON } from "./json-loader.js";
 
 export class RestfulFormElement extends HTMLElement {
   static observedAttributes = ["src", "new"];
@@ -110,8 +111,10 @@ export class RestfulFormElement extends HTMLElement {
   }
 
   connectedCallback() {
-    this._authObserver.observe().then((obs) => {
-      obs.setEffect(({ user }) => {
+    this._authObserver.observe(
+
+        
+        ({ user }) => {
         this._user = user;
         if (this.src) {
           loadJSON(
@@ -122,7 +125,7 @@ export class RestfulFormElement extends HTMLElement {
           );
         }
       });
-    });
+  
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -204,4 +207,36 @@ function submitForm(
       return res.json();
     })
     .catch((err) => console.log("Error submitting form:", err));
+}
+
+function renderSlots(json) {
+  console.log("RenderingSlots:", json);
+  const entries = Object.entries(json);
+  const slot = ([key, value]) => {
+    let type = typeof value;
+
+    if (type === "object") {
+      if (Array.isArray(value)) type = "array";
+    }
+
+    if (key === "avatar") {
+      type = "avatar";
+    }
+
+    switch (type) {
+      case "array":
+        return `<ul slot="${key}">
+          ${value.map((s) => `<li>${s}</li>`).join("")}
+          </ul>`;
+      case "avatar":
+        return `<profile-avatar slot="${key}"
+          color="${json.color}"
+          src="${value}">
+        </profile-avatar>`;
+      default:
+        return `<span slot="${key}">${value}</span>`;
+    }
+  };
+
+  return entries.map(slot).join("\n");
 }
