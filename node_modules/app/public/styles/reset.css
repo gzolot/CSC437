@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-align: left;
+    font-family: var(--primary-font-family);
+}
+header{
+    display: grid;
+    line-height: 1.5;
+}
+.dark-mode-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+body {
+    display: grid;
+    line-height: 1.5;
+
+}
+img {
+    max-width: 100%;
+}
+#progressions #flexion #extension{
+    display: grid;
+    margin: 5px
+
+}
+
+p {
+    line-height: 1.6;
+}
+
+.skill {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.skill:last-child {
+    border-bottom: none;
+}
+
+.skill a {
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+footer{
+    text-align: center;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
