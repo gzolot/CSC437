@@ -13,5 +13,9 @@
     "@calpoly/mustang": "^0.1.13",
     "lit": "^3.1.4",
     "server": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13"
   }
 }

@@ -48,6 +48,19 @@ nav ul li a:hover {
 
 }
 
+#page a {
+    padding: 10px 20px;
+      border: none;
+      border-radius: 5px; /* Simple and effective border radius */
+      background-color: var(--button-background); /* Using the button background color */
+      color: var(--text-on-primary); /* Text color on primary button background */
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
 
 
 /* Section Styles */
